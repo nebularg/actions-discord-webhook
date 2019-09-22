@@ -1,0 +1,12 @@
+name: GitHub Actions Discord Webhook
+description: Sends the build status to a Discord webhook
+inputs:
+  webhook_url:
+    description: The Discord webhook url
+    required: true
+  status:
+    description: The build status
+    required: true
+runs:
+  using: bash
+  main: send.sh
