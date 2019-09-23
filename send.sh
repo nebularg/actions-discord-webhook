@@ -11,15 +11,15 @@ if [ -z "$WEBHOOK_URL" ] || [ -z "$BUILD_STATUS" ]; then
 fi
 
 case "$BUILD_STATUS" in
-	success)
+	[Ss]uccess)
 		STATUS="passed"
 		STATUS_COLOR=3066993
 		;;
-	failure)
+	[Ff]ailure)
 		STATUS="failed"
 		STATUS_COLOR=15158332
 		;;
-	cancelled)
+	[Cc]ancelled)
 		STATUS="cancelled"
 		STATUS_COLOR=15909962
 		;;
