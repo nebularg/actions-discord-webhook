@@ -1,6 +1,16 @@
 #!/usr/bin/env bash
 
-case "$INPUT_STATUS" in
+if [ -z "$BUILD_STATUS" ]; then
+	echo "ERROR! You need to set the BUILD_STATUS environment variable."
+fi
+if [ -z "$WEBHOOK_URL" ]; then
+	echo "ERROR! You need to set the WEBHOOK_URL environment variable."
+fi
+if [ -z "$WEBHOOK_URL" ] || [ -z "$BUILD_STATUS" ]; then
+	exit 0
+fi
+
+case "$BUILD_STATUS" in
 	success)
 		STATUS="passed"
 		STATUS_COLOR=3066993
@@ -14,7 +24,7 @@ case "$INPUT_STATUS" in
 		STATUS_COLOR=15909962
 		;;
 	*)
-		echo "ERROR! Unknown status \"$INPUT_STATUS\""
+		echo "ERROR! Unknown status \"$BUILD_STATUS\""
 		exit 0
 		;;
 esac
@@ -90,4 +100,4 @@ EOF
 )
 
 echo -n "Sending status to Discord..."
-curl -sf -H "Content-Type: application/json" -d "$PAYLOAD_DATA" "$INPUT_WEBHOOK_URL" && echo "success!" || echo "failure!"
+curl -sf -H "Content-Type: application/json" -d "$PAYLOAD_DATA" "$WEBHOOK_URL" && echo "success!" || echo "failure!"
