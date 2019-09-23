@@ -17,7 +17,9 @@ jobs:
       env:
         WEBHOOK_URL: ${{ secrets.discord_webhook_url }}
         BUILD_STATUS: ${{ job.status }}
-      run: curl -s https://raw.githubusercontent.com/nebularg/actions-discord-webhook/master/send.sh | bash
+      run: |
+        cd $GITHUB_WORKSPACE
+        ./send.sh
 
     - name: Dump env
       if: always()
