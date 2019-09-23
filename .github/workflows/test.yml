@@ -7,6 +7,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v1
+
     # - name: Send to Discord via Action
     # - uses: nebularg/actions-discord-webhook@master
     #   with:
@@ -14,7 +16,6 @@ jobs:
     #     status: ${{ job.status }}
 
     - name: Send to Discord via script
-      uses: actions/checkout@v1
       env:
         WEBHOOK_URL: ${{ secrets.discord_webhook_url }}
         BUILD_STATUS: ${{ job.status }}
