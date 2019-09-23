@@ -14,12 +14,11 @@ jobs:
     #     status: ${{ job.status }}
 
     - name: Send to Discord via script
+      uses: actions/checkout@v1
       env:
         WEBHOOK_URL: ${{ secrets.discord_webhook_url }}
         BUILD_STATUS: ${{ job.status }}
-      run: |
-        cd $GITHUB_WORKSPACE
-        ./send.sh
+      run: ./send.sh
 
     - name: Dump env
       if: always()
