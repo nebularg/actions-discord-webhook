@@ -2,7 +2,7 @@
 
 ```yaml
     - name: Send status to Discord
-      using: nebularg/actions-discord-webhook@master
+      using: nebularg/actions-discord-webhook@v1
       with:
         webhook_url: ${{ secrets.discord_webhook_url }} # required
         status: ${{ job.status }} # optional, this is the default
