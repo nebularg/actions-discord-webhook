@@ -1,5 +1,8 @@
 name: GitHub Actions Discord Webhook
 description: Sends the build status to a Discord webhook
+branding:
+  icon: bell
+  color: gray-dark
 inputs:
   webhook_url:
     description: The Discord webhook url

@@ -8,3 +8,5 @@
         status: ${{ job.status }} # optional, this is the default
       if: always() # or failure() or success()
 ```
+
+![Discord message](https://raw.githubusercontent.com/nebularg/actions-discord-webhook/master/Screenshot.jpg)
