@@ -64,6 +64,8 @@ else
 	BRANCH_URL="[\`$_BRANCH\`](https://github.com/$GITHUB_REPOSITORY/tree/$_BRANCH)"
 fi
 
+TIMESTAMP=$( TZ='' printf "%(%FT%TZ)T" )
+
 PAYLOAD_DATA=$(
 cat <<EOF
 {
@@ -75,7 +77,7 @@ cat <<EOF
 			"type": "rich",
 			"description": $DESCRIPTION,
 			"url": "$CONTENT_URL",
-			"timestamp": "$( TZ='' printf "%(%FT%TZ)T" )",
+			"timestamp": "$TIMESTAMP",
 			"color": $STATUS_COLOR,
 			"author": {
 				"name": "$STATUS_MESSAGE",

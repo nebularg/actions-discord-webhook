@@ -6,7 +6,13 @@ inputs:
     required: true
   status:
     description: The build status
-    required: true
+    required: false
+    default: ${{ job.status }}
 runs:
-  using: bash
-  main: send.sh
+  using: composite
+  steps:
+    - run: $GITHUB_ACTION_PATH/send.sh
+      shell: bash
+      env:
+        WEBHOOK_URL: ${{ inputs.webhook_url }}
+        BUILD_STATUS: ${{ inputs.status }}
