@@ -5,6 +5,6 @@
       using: nebularg/actions-discord-webhook@master
       with:
         webhook_url: ${{ secrets.discord_webhook_url }} # required
-        status: ${{ job.status }} # optional, this is default
+        status: ${{ job.status }} # optional, this is the default
       if: always() # or failure() or success()
 ```
